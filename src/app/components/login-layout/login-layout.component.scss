@@ -27,6 +27,9 @@
   color: white;
 }
 
+button:disabled {
+  opacity: 0.8;
+}
 
 input:focus {
   outline: none;

@@ -6,15 +6,17 @@
           <div class="d-flex justify-content-center">
             <img class="image" src="../../../assets/images/logo-form.png" alt="logo">
           </div>
-          <<ng-content></ng-content>
-
+          <ng-content></ng-content>
             <div class="col">
-              <button style="background-color: #176B87;" class="w-100 text-white mb-2" mat-flat-button>Entrar na sua
+              <button [disabled]="disablePrimaryButton" (click)="submit()" style="background-color: #176B87;"
+                class="w-100 text-white mb-2" mat-flat-button>Entrar na
+                sua
                 conta</button>
               <div class="or-divider">
                 <span>ou</span>
               </div>
-              <button class="w-100" mat-stroked-button style="color: #176B87; border: 1px solid #176B87;">Criar conta
+              <button (click)="navigate()" class="w-100" mat-stroked-button style="color: #176B87; border: 1px solid #176B87;">Criar
+                conta
               </button>
             </div>
         </div>
