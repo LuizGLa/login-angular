@@ -1,0 +1,21 @@
+@import "../../../styles/variables.scss";
+
+.bg-icon {
+  background-color: $primary-color;
+}
+
+
+.bg-input {
+  color: $primary-color;
+}
+
+.icon {
+  color: white;
+}
+
+
+input:focus {
+  outline: none;
+  border: 1px solid $primary-color;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

@@ -1,0 +1,57 @@
+@import "../../../styles/variables.scss";
+
+.image {
+  width: 20em;
+  margin-bottom: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-icon {
+  background-color: $primary-color;
+}
+
+.body-page {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.bg-input {
+  color: $primary-color;
+}
+
+.icon {
+  color: white;
+}
+
+
+input:focus {
+  outline: none;
+  border: 1px solid $primary-color;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #b8b8b8;
+}
+
+.or-divider:not(:empty)::before {
+  margin-right: .25em;
+}
+
+.or-divider:not(:empty)::after {
+  margin-left: .25em;
+}
