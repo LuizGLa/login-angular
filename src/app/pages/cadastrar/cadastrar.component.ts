@@ -12,7 +12,7 @@ import { LoginService } from '../../services/login.service';
 
 
 @Component({
-  selector: 'app-cadastrar',
+  selector: 'app-login',
   standalone: true,
   imports: [
 
@@ -21,27 +21,28 @@ import { LoginService } from '../../services/login.service';
   providers: [
     LoginService
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  templateUrl: './cadastrar.component.html',
+  styleUrl: './cadastrar.component.scss'
 })
-export class LoginComponent {
-  loginForm!: FormGroup;
+export class CadastrarComponent {
+  cadastrarForm!: FormGroup;
 
   constructor(
     private router: Router,
     private loginService: LoginService
   ) {
 
-    this.loginForm = new FormGroup({
+    this.cadastrarForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
 
   }
 
   submit() {
-    console.log(this.loginForm)
-    this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe({
+    console.log(this.cadastrarForm)
+    this.loginService.login(this.cadastrarForm.value.username, this.cadastrarForm.value.password).subscribe({
       next: () => {
         this.router.navigate(['home']);
       },
@@ -51,7 +52,7 @@ export class LoginComponent {
     });
   }
   navigate() {
-    this.router.navigate(['cadastrar']);
+    this.router.navigate(['login']);
   }
 
 }
