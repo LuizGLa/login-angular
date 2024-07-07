@@ -44,7 +44,7 @@ export class CadastrarComponent {
     console.log(this.cadastrarForm)
     this.loginService.login(this.cadastrarForm.value.username, this.cadastrarForm.value.password).subscribe({
       next: () => {
-        this.router.navigate(['home']);
+        this.router.navigate(['mapa']);
       },
       error: (error) => {
         console.error(error);

@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastrarComponent } from './pages/cadastrar/cadastrar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { AuthGuard } from './services/auth.guard';
+import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component';
+import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   {
@@ -14,13 +15,18 @@ export const routes: Routes = [
     component: CadastrarComponent
   },
   {
-    path: 'home',
+    path: 'mapa',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    resolve: { auth: AuthGuard }
+  },
+  {
+    path: 'ocorrencias',
+    component: OcorrenciasComponent,
+    resolve: { auth: AuthGuard }
   },
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/mapa',
     pathMatch: 'full'
   }
 ];

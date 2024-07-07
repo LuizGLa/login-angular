@@ -43,7 +43,7 @@ export class LoginComponent {
     console.log(this.loginForm)
     this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe({
       next: () => {
-        this.router.navigate(['home']);
+        this.router.navigate(['/mapa']);
       },
       error: (error) => {
         console.error(error);
