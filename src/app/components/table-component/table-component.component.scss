@@ -1,0 +1,15 @@
+/* CSS */
+.mat-paginator-range-label,
+.mat-paginator-page-size {
+  display: none !important;
+}
+
+.mat-paginator-navigation-previous,
+.mat-paginator-navigation-next {
+  margin: 0 auto !important;
+}
+
+.mat-paginator-navigation-first,
+.mat-paginator-navigation-last {
+  display: none !important;
+}

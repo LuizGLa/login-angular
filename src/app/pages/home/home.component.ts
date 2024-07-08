@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   configMap() {
     this.map = L.map('map', {
       center: [-14.8593534, -40.8461146],
-      zoom: 15
+      zoom: 14
     });
 
     const defaultIcon = L.icon({
