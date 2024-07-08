@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToolbarComponent } from '../../components/home-components/toolbar/toolbar.component';
 import { MapaService } from '../../services/mapa.service';
 import { AuthInterceptor } from '../../auth/auth.interceptor';
 import { CardModulesComponent } from '../../components/card-modules/card-modules.component';
+import { ToastrService } from 'ngx-toastr';
 
 declare let L: any; // Declaração para usar o Leaflet importado pelo CDN
 
@@ -27,6 +28,7 @@ const shadowUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png
 
 export class HomeComponent implements OnInit {
   map: any;
+  toaster = inject(ToastrService)
 
   constructor(private mapaService: MapaService) { }
 
@@ -68,10 +70,9 @@ export class HomeComponent implements OnInit {
         });
       },
       error: error => {
-        console.error('Erro ao buscar ocorrências:', error);
+        this.toaster.error('Erro ao buscar ocorrências:', error);
       },
       complete: () => {
-        console.log('Busca de ocorrências completada.');
       }
     });
   }
