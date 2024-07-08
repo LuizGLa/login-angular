@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LoginLayoutComponent } from '../../components/login-layout/login-layout.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { InputLoginComponent } from '../../components/input-login/input-login.component';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -26,6 +27,7 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  toaster = inject(ToastrService)
 
   constructor(
     private router: Router,
@@ -34,7 +36,7 @@ export class LoginComponent {
 
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)])
+      password: new FormControl('', [Validators.required])
     });
 
   }
@@ -47,6 +49,7 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error(error);
+        this.toaster.error('Usuário ou senha inválidos!')
       }
     });
   }
