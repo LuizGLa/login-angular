@@ -11,7 +11,7 @@ export class AuthGuard implements Resolve<boolean> {
 
   resolve(): Observable<boolean> {
     if (typeof sessionStorage !== 'undefined') {
-      const token = sessionStorage.getItem('auth-token');
+      const token = sessionStorage.getItem('token');
       if (token) {
         return of(true);
       } else {

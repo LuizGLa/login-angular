@@ -1,1 +1,39 @@
 @import 'ngx-toastr/toastr';
+@import "../styles/variables.scss";
+
+mat-sidenav {
+  background-color: $drawer-color;
+  width: 230px;
+}
+
+.mat-drawer-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.links {
+  padding: 10px;
+  text-decoration: none;
+  color: rgb(216, 216, 221);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+
+.body-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.active {
+  border-left: 3px solid rgb(7, 133, 236);
+  font-weight: 500;
+  color: white;
+  background-color: rgb(6, 32, 65);
+}
+
+.icon {
+  margin-right: 0.7em;
+}

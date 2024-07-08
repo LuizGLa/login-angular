@@ -21,3 +21,19 @@
   background: linear-gradient(to right, $primary-color, rgb(3, 148, 158));
   color: white;
 }
+.example-container {
+  width: auto;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+  background: #835454;
+}
+
+.active {
+  border-bottom: 3px solid rgb(7, 221, 236);
+  font-weight: 600;
+}
+
+.header {
+  padding: 0;
+}

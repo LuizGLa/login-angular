@@ -1,2 +1,21 @@
-<app-toolbar *ngIf="router.url !== '/login'"></app-toolbar>
-<router-outlet></router-outlet>
+<app-toolbar *ngIf="router.url !== '/login'" (toggleSidenav)="onToggleSidenav()"></app-toolbar>
+<mat-sidenav-container hasBackdrop="false" class="example-container">
+  <mat-sidenav *ngIf="router.url !== '/login'" #sidenav mode="side" class="sidenav" opened>
+    <div class="body-links">
+      <a mat-list-item class="links" routerLink="/mapa" routerLinkActive="active">
+        <mat-icon fontIcon="map" class="icon"></mat-icon>
+        Mapa
+      </a>
+      <a mat-list-item class="links" routerLink="/ocorrencias" routerLinkActive="active">
+        <mat-icon fontIcon="description" class="icon"></mat-icon>
+        Ocorrências
+      </a>
+      <a mat-list-item class="links" routerLink="/ruas" routerLinkActive="active">
+        <mat-icon fontIcon="traffic" class="icon"></mat-icon>
+        Ruas</a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+  </mat-sidenav-container>

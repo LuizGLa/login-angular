@@ -15,7 +15,7 @@ export class LoginService {
   login(username: string, password: string) {
     return this.httpCliente.post<LoginResponse>(`${this.apiUrl}/auth`, { username, password }).pipe(
       tap((value) => {
-        sessionStorage.setItem('auth-token', value.token);
+        sessionStorage.setItem('token', value.token);
       })
     )
   }
