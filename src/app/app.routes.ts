@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastrarComponent } from './pages/cadastrar/cadastrar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { OcorrenciasComponent } from './pages/ocorrencias/ocorrencias.component';
 import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
@@ -21,7 +20,7 @@ export const routes: Routes = [
   },
   {
     path: 'ocorrencias',
-    component: OcorrenciasComponent,
+    loadChildren: () => import('./pages/ocorrencias/ocorrencia.module').then(m => m.OcorrenciaModule),
     resolve: { auth: AuthGuard }
   },
   {

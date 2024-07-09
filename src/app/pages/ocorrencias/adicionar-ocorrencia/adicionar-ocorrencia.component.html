@@ -1,0 +1,61 @@
+<app-card-modules [title]="tituloPagina" icon="note_add">
+  <form class="example-form row g-3">
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar título da ocorrência" class="example-full-width">
+        <input matInput required="true" placeholder="Título da Ocorrência" [(ngModel)]="titulo"
+          [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar descrição da ocorrência" class="example-full-width">
+        <input role="alert" matInput required="true" placeholder="Descrição da Ocorrência" [(ngModel)]="descricao"
+          [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar a localização" class="example-full-width">
+        <input matInput required="true" placeholder="Localização da Ocorrência" [(ngModel)]="localizacao"
+          [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar latitude da ocorrência" class="example-full-width">
+        <input matInput required="true" placeholder="ex: -14.85212695921751" [(ngModel)]="latitude"
+          [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar logintude da ocorrência" class="example-full-width">
+        <input matInput required="true" placeholder="ex: -40.86262344966059" [(ngModel)]="longitude"
+          [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar logintude da ocorrência" class="example-full-width">
+        <input type="datetime-local" matInput required="true" placeholder="Dia e hora da Ocorrência"
+          [(ngModel)]="dataHora" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar rua da ocorrência" required="true" placeholder="Rua da Ocorrência"
+        class="example-full-width">
+        <mat-label>Rua da ocorrência</mat-label>
+        <mat-select>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4">
+      <mat-form-field hintLabel="Informar tipo de ocorrência" required="true" class="example-full-width">
+        <mat-label>Tipo da ocorrência</mat-label>
+        <mat-select>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</app-card-modules>

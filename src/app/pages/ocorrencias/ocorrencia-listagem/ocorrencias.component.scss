@@ -1,4 +1,4 @@
-@import "../../../styles/variables.scss";
+@import "../../../../styles/variables.scss";
 
 .button {
   background-color: $button-background-color !important;
@@ -12,6 +12,7 @@
 table {
   width: 100%;
 }
+
 .custom-header {
   background-color: rgb(3, 122, 158) !important;
   color: white;
