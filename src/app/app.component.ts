@@ -54,7 +54,6 @@ export class AppComponent implements AfterViewInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       if (this.router.url === '/login') {
-        this.sidenav.mode = 'over';
         this.sidenav.close();
       } else {
         this.sidenav.open();
