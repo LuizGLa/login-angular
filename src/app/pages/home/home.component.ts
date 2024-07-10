@@ -5,10 +5,19 @@ import { MapaService } from '../../services/mapa.service';
 import { AuthInterceptor } from '../../auth/auth.interceptor';
 import { CardModulesComponent } from '../../components/card-modules/card-modules.component';
 import { ToastrService } from 'ngx-toastr';
+import { CardDashboardComponent } from '../../components/card-dashboard/card-dashboard.component';
 
 declare let L: any;
 const iconUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png';
 const shadowUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png';
+
+interface Dashboard {
+  ruas: number;
+  ocorrencias: number;
+  tiposOcorrencias: number;
+  usuarios: number;
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -17,22 +26,31 @@ const shadowUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png
   imports: [
     ToolbarComponent,
     HttpClientModule,
-    CardModulesComponent
+    CardModulesComponent,
+    CardDashboardComponent
   ],
-  providers: [MapaService,
+  providers: [
+    MapaService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ]
 })
-
 export class HomeComponent implements OnInit {
   map: any;
-  toaster = inject(ToastrService)
+  toaster = inject(ToastrService);
+
+  dashboardData: Dashboard = {
+    ruas: 0,
+    ocorrencias: 0,
+    tiposOcorrencias: 0,
+    usuarios: 0
+  };
 
   constructor(private mapaService: MapaService) { }
 
   ngOnInit(): void {
     this.configMap();
     this.loadOcorrencias();
+    this.loadDashboardData();
   }
 
   configMap() {
@@ -63,16 +81,25 @@ export class HomeComponent implements OnInit {
       next: ocorrencias => {
         ocorrencias.forEach(ocorrencia => {
           const marker = L.marker([ocorrencia.latitude, ocorrencia.longitude]).addTo(this.map);
-          marker.bindPopup(`<b>${ocorrencia.titulo}</b><br>${ocorrencia.descricao}</b><br>${ocorrencia.localizacao}
-            `).openPopup();
+          marker.bindPopup(`<b>${ocorrencia.titulo}</b><br>${ocorrencia.descricao}</b><br>${ocorrencia.localizacao}`).openPopup();
         });
       },
       error: error => {
         this.toaster.error('Erro ao buscar ocorrências:', error);
       },
-      complete: () => {
-      }
+      complete: () => { }
     });
   }
 
+  loadDashboardData() {
+    this.mapaService.getDashboard().subscribe({
+      next: (data: Dashboard) => {
+        this.dashboardData = data;
+      },
+      error: error => {
+        this.toaster.error('Erro ao buscar dados do dashboard:', error);
+      },
+      complete: () => { }
+    });
+  }
 }

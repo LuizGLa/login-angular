@@ -17,4 +17,8 @@ export class MapaService {
   getOcorrencias(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl + '/ocorrencias');
   }
+
+  getDashboard(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/dashboard/counts');
+  }
 }

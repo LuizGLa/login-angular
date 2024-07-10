@@ -1,4 +1,24 @@
 <app-card-modules title="Mapa de Ocorrências" icon="map">
+  <div class="d-flex row mt-3">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <app-card-dashboard icon="traffic" name="Ruas cadastradas" [value]="dashboardData.ruas"></app-card-dashboard>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <app-card-dashboard icon="description" name="Ocorrências cadastradas" [value]="dashboardData.ocorrencias">
+  
+      </app-card-dashboard>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <app-card-dashboard icon="category" name="Tipos de ocorrências" [value]="dashboardData.tiposOcorrencias">
+  
+      </app-card-dashboard>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <app-card-dashboard icon="group" name="Usuários" [value]="dashboardData.usuarios">
+  
+      </app-card-dashboard>
+    </div>
+  </div>
   <div class="map-container">
     <div id="map"></div>
   </div>
