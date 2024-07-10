@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ToolbarComponent } from './components/home-components/toolbar/toolbar.component';
@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { filter } from 'rxjs';
 import { UsuarioService } from './services/usuario.service';
 import { Usuario } from './models/usuario.model';
-
 
 @Component({
   selector: 'app-root',
@@ -33,20 +32,29 @@ import { Usuario } from './models/usuario.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'ocorre-map';
-  user: any;
-  userId: string | null = null;
+  name = "Usuário admin";
+  role = "admin";
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     public router: Router,
-    private usuarioService: UsuarioService
   ) {
-    if (typeof sessionStorage !== 'undefined') {
-      this.userId = sessionStorage.getItem('userId');
-    }
+  }
+
+  ngOnInit(): void {
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      if (this.router.url === '/login') {
+        this.sidenav.close();
+      } else {
+        this.sidenav.open();
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -60,27 +68,6 @@ export class AppComponent implements AfterViewInit {
           this.sidenav.open();
         }
       });
-
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
-      if (this.router.url === '/login') {
-        this.sidenav.close();
-      } else {
-        this.sidenav.open();
-      }
-    });
-
-    if (this.userId) {
-      this.usuarioService.getUsuarioPorId(this.userId).subscribe(
-        (usuario: any) => {
-          this.user = usuario;
-        },
-        (error) => {
-          console.error('Error fetching user details:', error);
-        }
-      );
-    }
   }
 
   onToggleSidenav() {

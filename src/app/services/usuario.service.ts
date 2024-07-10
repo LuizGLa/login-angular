@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { TipoOcorrenciaCreate } from '../models/tipoOcorrenciaCreate.model';
-import { Rua, Ruas } from '../models/rua.model';
-import { RuaCreate } from '../models/ruaCreate';
 import { Usuario, Usuarios } from '../models/usuario.model';
 import { UsuarioCreate } from '../models/usuarioCreate';
 
@@ -12,9 +9,9 @@ import { UsuarioCreate } from '../models/usuarioCreate';
   providedIn: 'root'
 })
 export class UsuarioService {
-
   private apiUrl = environment.backendUrl;
-
+  private usuarioSubject = new BehaviorSubject<Usuario | null>(null);
+  usuario$ = this.usuarioSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -22,8 +19,18 @@ export class UsuarioService {
     return this.http.get<Usuarios>(this.apiUrl + '/usuarios');
   }
 
+  // Mantém a função original para retornar Observable
   getUsuarioPorId(id: string): Observable<Usuario> {
-    return this.http.get<Usuario>(this.apiUrl + '/usuarios/' + id);
+    const usuarioObservable = this.http.get<Usuario>(this.apiUrl + '/usuarios/' + id);
+    usuarioObservable.subscribe(
+      (usuario: Usuario) => {
+        this.usuarioSubject.next(usuario);
+      },
+      (error) => {
+        console.error('Error fetching user details:', error);
+      }
+    );
+    return usuarioObservable;
   }
 
   criarUsuario(usuarioCreate: UsuarioCreate): Observable<any> {
@@ -37,5 +44,4 @@ export class UsuarioService {
   deletarUsuario(id: any): Observable<any> {
     return this.http.delete(this.apiUrl + '/usuarios/' + id);
   }
-
 }
