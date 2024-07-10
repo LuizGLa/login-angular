@@ -1,5 +1,5 @@
 {
-  "name": "sistema-modelo",
+  "name": "ocorre-map",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:sistema-modelo": "node dist/sistema-modelo/server/server.mjs"
+    "serve:ssr:ocorre-map": "node dist/ocorre-map/server/server.mjs"
   },
   "private": true,
   "dependencies": {

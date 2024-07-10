@@ -32,7 +32,7 @@ import { filter } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-  title = 'sistema-modelo';
+  title = 'ocorre-map';
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 
