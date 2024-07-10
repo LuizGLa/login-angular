@@ -79,7 +79,7 @@ export class OcorrenciasComponent implements OnInit {
       if (result) {
         this.ocorrenciaService.deletarOcorrencia(ocorrencia.id).subscribe(response => {
           this.toaster.success('Ocorrência excluída com sucesso!');
-          this.atualizarOcorrencias(); // Chama a função para atualizar a lista
+          this.atualizarOcorrencias();
         });
       }
     });
