@@ -1,27 +1,18 @@
-# SistemaModelo
+Projeto Ocorre Map
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Instalação:
+Para começar, certifique-se de ter o Node.js e o npm instalados. Em seguida, execute o seguinte comando para instalar as dependências necessárias:
 
-## Development server
+npm install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Configuração do Ambiente:
+Antes de iniciar o servidor de desenvolvimento, verifique e ajuste o arquivo src/environments/environment.ts para garantir que a URL da API corresponda à configuração do servidor back-end.
 
-## Code scaffolding
+Exemplo (environment.ts):
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Executando o Servidor de Desenvolvimento
+Após configurar o ambiente, você pode iniciar o servidor de desenvolvimento Angular usando o seguinte comando:
 
-## Build
+ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Isso iniciará o servidor de desenvolvimento. Navegue até http://localhost:4200/ no seu navegador para ver o aplicativo em execução.
