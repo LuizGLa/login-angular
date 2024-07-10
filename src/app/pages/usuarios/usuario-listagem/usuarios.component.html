@@ -1,0 +1,7 @@
+<app-card-modules title="Usuários" icon="group">
+  <app-table-component [columns]="['name', 'username', 'role']"
+    [columnTitles]="{ name: 'Nome', username: 'Email', role: 'Nível'}" [dataSource]="dataSource"
+    [rotaAdicionar]="'/usuarios/adicionar'" [nameButton]="'Adicionar Usuário'" (edit)="editUsuario($event)"
+    (delete)="deleteUsuario($event)">
+  </app-table-component>
+</app-card-modules>

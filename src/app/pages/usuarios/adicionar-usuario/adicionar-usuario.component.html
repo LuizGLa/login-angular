@@ -1,0 +1,29 @@
+<app-card-modules [title]="tituloPagina" icon="group">
+  <form class="example-form row g-3 mt-2" [formGroup]="formCadastroUsuario">
+
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <mat-form-field hintLabel="Informar o nome do usuário" class="example-full-width">
+        <input matInput required="true" placeholder="Nome do usuário" formControlName="name">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <mat-form-field hintLabel="Informar email do usuario" class="example-full-width">
+        <input role="alert" matInput required="true" placeholder="Email do usuário" formControlName="username">
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <mat-form-field hintLabel="Informar a senha do usuario" class="example-full-width">
+        <input type="password" role="alert" matInput required="true" placeholder="Senha do usuário"
+          formControlName="password">
+      </mat-form-field>
+    </div>
+  </form>
+  <div class=" justify-content-end d-flex mt-5">
+    <div style="padding-inline: 4px;" class="col-lg-1 col-md-3 col-sm-6 col-xs-12 box-button">
+      <button (click)="salvarUsuario()" class="button" mat-raised-button color="primary">Salvar</button>
+    </div>
+    <div style="padding-inline: 4px;" class="col-lg-1 col-md-3 col-sm-6 col-xs-12 box-button">
+      <button routerLink="/usuarios" class="button" mat-stroked-button color="primary">Cancelar</button>
+    </div>
+  </div>
+</app-card-modules>

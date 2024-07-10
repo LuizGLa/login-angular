@@ -34,6 +34,11 @@ export const routes: Routes = [
     resolve: { auth: AuthGuard }
   },
   {
+    path: 'usuarios',
+    loadChildren: () => import('./pages/usuarios/usuario.module').then(m => m.UsuarioModule),
+    resolve: { auth: AuthGuard }
+  },
+  {
     path: '',
     redirectTo: '/mapa',
     pathMatch: 'full'
