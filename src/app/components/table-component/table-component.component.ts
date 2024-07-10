@@ -1,9 +1,9 @@
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CardModulesComponent } from '../card-modules/card-modules.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { MaterialModule } from '../../shared/material/material.module';
 import { MatTableDataSource } from '@angular/material/table';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'app-table-component',
@@ -16,16 +16,16 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [DatePipe],
   templateUrl: './table-component.component.html',
-  styleUrl: './table-component.component.scss'
+  styleUrls: ['./table-component.component.scss']
 })
-export class TableComponentComponent {
+export class TableComponentComponent implements OnInit {
   @Input() rotaAdicionar!: string;
   @Input() nameButton!: string;
   @Input() columns: string[] = [];
   @Input() dataSource: MatTableDataSource<any> = new MatTableDataSource();
   @Input() set columnTitles(value: { [key: string]: string }) {
-    this.displayedColumns = [...this.columns, 'actions'];
     this._columnTitles = value;
+    this.updateDisplayedColumns();
   }
   @Input() columnPipes: { [key: string]: { pipe: string, params: any[] } } = {};
   @Output() edit = new EventEmitter<any>();
@@ -33,13 +33,26 @@ export class TableComponentComponent {
 
   displayedColumns!: string[];
 
+  private _columnTitles: { [key: string]: string } = {};
+
+  constructor(private datePipe: DatePipe, private router: Router) { }
+
+  ngOnInit() {
+    this.updateDisplayedColumns();
+  }
+
+  private updateDisplayedColumns() {
+    this.displayedColumns = [...this.columns];
+    const currentUrl = this.router.url;
+
+    if (currentUrl !== '/usuarios') {
+      this.displayedColumns.push('actions');
+    }
+  }
+
   get columnTitles(): { [key: string]: string } {
     return this._columnTitles;
   }
-
-  private _columnTitles: { [key: string]: string } = {};
-
-  constructor(private datePipe: DatePipe) { }
 
   getColumnTitle(column: string): string {
     return this.columnTitles[column] || column;
@@ -70,4 +83,3 @@ export class TableComponentComponent {
     this.delete.emit(element);
   }
 }
-
