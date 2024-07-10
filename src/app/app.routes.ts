@@ -24,6 +24,11 @@ export const routes: Routes = [
     resolve: { auth: AuthGuard }
   },
   {
+    path: 'tipo-ocorrencias',
+    loadChildren: () => import('./pages/tipo-ocorrencias/tipo-ocorrencia.module').then(m => m.TipoOcorrenciaModule),
+    resolve: { auth: AuthGuard }
+  },
+  {
     path: '',
     redirectTo: '/mapa',
     pathMatch: 'full'

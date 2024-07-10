@@ -9,7 +9,7 @@ import { AdicionarOcorrenciaComponent } from './adicionar-ocorrencia/adicionar-o
 const routes: Routes = [
   { path: '', component: OcorrenciasComponent },
   { path: 'adicionar', component: AdicionarOcorrenciaComponent },
-  // { path: 'editar-ocorrencia/:id', component: EditarOcorrenciaComponent },
+  { path: 'editar-ocorrencia/:id', component: AdicionarOcorrenciaComponent },
   // { path: '**', component: NotFoundComponent }
 ]
 

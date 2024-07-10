@@ -6,11 +6,16 @@ export interface Ocorrencia {
   latitude: string;
   longitude: string;
   dataHora: Date;
+  tipoOcorrencia: {
+    id: number;
+    descricao: string;
+  };
   rua: {
     id: number;
     nome: string;
   };
   usuario: {
+    id: number;
     name: string;
   }
 }

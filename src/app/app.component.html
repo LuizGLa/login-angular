@@ -1,6 +1,6 @@
 <app-toolbar *ngIf="router.url !== '/login'" (toggleSidenav)="onToggleSidenav()"></app-toolbar>
 <mat-sidenav-container hasBackdrop="false" class="example-container">
-  <mat-sidenav *ngIf="router.url !== '/login'" #sidenav mode="side" class="sidenav" opened>
+  <mat-sidenav #sidenav mode="side" class="sidenav" opened>
     <div class="body-links">
       <a mat-list-item class="links" routerLink="/mapa" routerLinkActive="active">
         <mat-icon fontIcon="map" class="icon"></mat-icon>
@@ -10,12 +10,17 @@
         <mat-icon fontIcon="description" class="icon"></mat-icon>
         Ocorrências
       </a>
+      <a mat-list-item class="links" routerLink="/tipo-ocorrencias" routerLinkActive="active">
+        <mat-icon fontIcon="category" class="icon"></mat-icon>
+        Tipo de Ocorrências
+      </a>
       <a mat-list-item class="links" routerLink="/ruas" routerLinkActive="active">
         <mat-icon fontIcon="traffic" class="icon"></mat-icon>
-        Ruas</a>
+        Ruas
+        </a>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-  </mat-sidenav-container>
+</mat-sidenav-container>

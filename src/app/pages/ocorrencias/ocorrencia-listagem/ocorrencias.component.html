@@ -1,4 +1,9 @@
 <app-card-modules title="Ocorrências" icon="description">
-  <app-table-component [columns]="columns" [columnTitles]="columnTitles" [columnPipes]="columnPipes"
-    rotaAdicionar="/ocorrencias/adicionar" [dataSource]="dataSource"
-    nameButton="Adicionar Ocorrência"></app-table-component>
+  <app-table-component [columns]="['titulo', 'descricao', 'localizacao', 'dataHora']"
+    [columnTitles]="{ titulo: 'Título', descricao: 'Descrição', localizacao: 'Localização', dataHora: 'Data/Hora' }"
+    [dataSource]="dataSource" [rotaAdicionar]="'/ocorrencias/adicionar'" [nameButton]="'Adicionar Ocorrência'"
+    [columnPipes]="{
+            'dataHora': { pipe: 'date', params: ['dd/MM/yyyy HH:mm'] }
+          }" (edit)="editOcorrencia($event)" (delete)="deleteOcorrencia($event)">
+  </app-table-component>
+  </app-card-modules>

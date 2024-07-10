@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ToolbarComponent } from './components/home-components/toolbar/toolbar.component';
 import { CommonModule } from '@angular/common';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { filter } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -47,6 +49,16 @@ export class AppComponent implements AfterViewInit {
           this.sidenav.open();
         }
       });
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      if (this.router.url === '/login') {
+        this.sidenav.close();
+      } else {
+        this.sidenav.open();
+      }
+    });
   }
 
   onToggleSidenav() {

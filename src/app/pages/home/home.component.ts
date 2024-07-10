@@ -6,9 +6,7 @@ import { AuthInterceptor } from '../../auth/auth.interceptor';
 import { CardModulesComponent } from '../../components/card-modules/card-modules.component';
 import { ToastrService } from 'ngx-toastr';
 
-declare let L: any; // Declaração para usar o Leaflet importado pelo CDN
-
-const iconRetinaUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png';
+declare let L: any;
 const iconUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png';
 const shadowUrl = 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png';
 @Component({

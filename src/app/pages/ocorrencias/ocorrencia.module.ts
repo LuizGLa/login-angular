@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OcorrenciaRoutingModule } from './ocorrencia-routing.module';
 import { OcorrenciasComponent } from './ocorrencia-listagem/ocorrencias.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +11,8 @@ import { OcorrenciasComponent } from './ocorrencia-listagem/ocorrencias.componen
   imports: [
     CommonModule,
     OcorrenciaRoutingModule,
-    OcorrenciasComponent
+    OcorrenciasComponent,
+    ReactiveFormsModule
   ]
 })
 export class OcorrenciaModule { }

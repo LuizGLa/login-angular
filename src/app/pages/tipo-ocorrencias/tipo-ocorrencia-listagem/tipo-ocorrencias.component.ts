@@ -1,0 +1,73 @@
+import { CommonModule } from "@angular/common";
+import { CardModulesComponent } from "../../../components/card-modules/card-modules.component";
+import { TableComponentComponent } from "../../../components/table-component/table-component.component";
+import { MaterialModule } from "../../../shared/material/material.module";
+import { Component, inject, OnInit } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
+import { MatTableDataSource } from "@angular/material/table";
+import { TipoOcorrenciaService } from "../../../services/tipo-ocorrencia.service";
+import { Router } from "@angular/router";
+import { TipoOcorrencia } from "../../../models/tipoOcorrencia.model";
+import { TipoOcorrenciaCreate } from "../../../models/tipoOcorrenciaCreate.model";
+
+
+interface TipoOcorrencias {
+  descricao: string;
+};
+@Component({
+  selector: 'app-tipo-ocorrencias',
+  standalone: true,
+  imports: [
+    CardModulesComponent,
+    TableComponentComponent,
+    CommonModule,
+    MaterialModule,
+  ],
+  templateUrl: './tipo-ocorrencias.component.html',
+  styleUrl: './tipo-ocorrencias.component.scss'
+})
+export class TipoOcorrenciasComponent implements OnInit {
+  toaster = inject(ToastrService)
+  nomeButtom = "Adicionar Tipo de Ocorrência";
+
+  columns: string[] = ['descricao'];
+  columnTitles: { [key: string]: string } = {
+    descricao: 'Descrição',
+  };
+
+
+  dataSource: MatTableDataSource<TipoOcorrencias>;
+
+  constructor(private tipoOcorrenciaService: TipoOcorrenciaService, public router: Router,) {
+    this.dataSource = new MatTableDataSource<TipoOcorrencias>();
+  }
+
+  editTipoOcorrencia(tipoOcorrencia: TipoOcorrencia): void {
+    this.router.navigate(['/tipo-ocorrencias/editar-tipo-ocorrencia', tipoOcorrencia.id]);
+  }
+
+  deleteTipoOcorrencia(tipoOcorrencia: TipoOcorrenciaCreate): void {
+    this.tipoOcorrenciaService.deletarTipoOcorrencia(tipoOcorrencia.id).subscribe(response => {
+      this.toaster.success('Tipo de Ocorrência excluída com sucesso!');
+      this.atualizarTipoOcorrencias();
+    });
+  }
+
+  atualizarTipoOcorrencias(): void {
+    this.tipoOcorrenciaService.getTipoOcorrencias().subscribe(
+      tipoOcorrenciasResponse => {
+        this.dataSource.data = tipoOcorrenciasResponse;
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.tipoOcorrenciaService.getTipoOcorrencias().subscribe(
+      tipoOcorrencias => {
+        this.dataSource.data = tipoOcorrencias;
+      }
+    );
+  }
+
+}
+

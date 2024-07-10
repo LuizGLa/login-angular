@@ -1,0 +1,19 @@
+@import "../../../../styles/variables.scss";
+
+.button {
+  background-color: $button-background-color !important;
+  color: white !important;
+}
+
+.body-table {
+  margin: 1em;
+}
+
+table {
+  width: 100%;
+}
+
+.custom-header {
+  background-color: rgb(3, 122, 158) !important;
+  color: white;
+}

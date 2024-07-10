@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { CardModulesComponent } from '../card-modules/card-modules.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { MaterialModule } from '../../shared/material/material.module';
@@ -23,8 +23,21 @@ export class TableComponentComponent {
   @Input() nameButton!: string;
   @Input() columns: string[] = [];
   @Input() dataSource: MatTableDataSource<any> = new MatTableDataSource();
-  @Input() columnTitles: { [key: string]: string } = {};
-  @Input() columnPipes: { [key: string]: { pipe: any, params: any[] } } = {};
+  @Input() set columnTitles(value: { [key: string]: string }) {
+    this.displayedColumns = [...this.columns, 'actions'];
+    this._columnTitles = value;
+  }
+  @Input() columnPipes: { [key: string]: { pipe: string, params: any[] } } = {};
+  @Output() edit = new EventEmitter<any>();
+  @Output() delete = new EventEmitter<any>();
+
+  displayedColumns!: string[];
+
+  get columnTitles(): { [key: string]: string } {
+    return this._columnTitles;
+  }
+
+  private _columnTitles: { [key: string]: string } = {};
 
   constructor(private datePipe: DatePipe) { }
 
@@ -48,4 +61,13 @@ export class TableComponentComponent {
     }
     return value;
   }
+
+  editElement(element: any) {
+    this.edit.emit(element);
+  }
+
+  deleteElement(element: any) {
+    this.delete.emit(element);
+  }
 }
+
