@@ -1,7 +1,7 @@
 <app-card-modules title="Tipos de Ocorrências" icon="category">
   <app-table-component [columns]="['descricao']"
     [columnTitles]="{ descricao: 'Descrição', data_criacao: 'Data de Criação', data_atualizacao: 'Data de Atualização'}"
-    [dataSource]="dataSource" [rotaAdicionar]="'/tipo-ocorrencias/adicionar'" [nameButton]="'Adicionar Ocorrência'"
+    [dataSource]="dataSource" [rotaAdicionar]="'/tipo-ocorrencias/adicionar'" [nameButton]="'Adicionar Tipo'"
     (edit)="editTipoOcorrencia($event)" (delete)="deleteTipoOcorrencia($event)">
   </app-table-component>
 </app-card-modules>

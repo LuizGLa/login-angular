@@ -83,6 +83,7 @@ export class AdicionarTipoOcorrenciaComponent implements OnInit {
         this.toaster.success('Tipo de Ocorrência criada com sucesso!');
         this.router.navigate(['/tipo-ocorrencias']);
       } catch (e) {
+        this.toaster.error('Erro ao criar Tipo');
         console.error('Erro ao redirecionar para a lista de tipos de ocorrências', e);
       }
     })
@@ -93,6 +94,7 @@ export class AdicionarTipoOcorrenciaComponent implements OnInit {
         this.toaster.success('Tipo de Ocorrência atualizada com sucesso!');
         this.router.navigate(['/tipo-ocorrencias']);
       } catch (e) {
+        this.toaster.error('Erro ao atualizar Tipo');
         console.error('Erro ao redirecionar para a lista de tipos de ocorrências', e);
       }
     })

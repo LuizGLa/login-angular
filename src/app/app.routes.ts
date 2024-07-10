@@ -29,6 +29,11 @@ export const routes: Routes = [
     resolve: { auth: AuthGuard }
   },
   {
+    path: 'ruas',
+    loadChildren: () => import('./pages/ruas/rua.module').then(m => m.RuaModule),
+    resolve: { auth: AuthGuard }
+  },
+  {
     path: '',
     redirectTo: '/mapa',
     pathMatch: 'full'

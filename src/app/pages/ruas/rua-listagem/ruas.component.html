@@ -1,0 +1,6 @@
+<app-card-modules title="Ruas" icon="traffic">
+  <app-table-component [columns]="['nome']" [columnTitles]="{ nome: 'Descrição'}" [dataSource]="dataSource"
+    [rotaAdicionar]="'/ruas/adicionar'" [nameButton]="'Adicionar Rua'" (edit)="editRua($event)"
+    (delete)="deleteRua($event)">
+  </app-table-component>
+</app-card-modules>
