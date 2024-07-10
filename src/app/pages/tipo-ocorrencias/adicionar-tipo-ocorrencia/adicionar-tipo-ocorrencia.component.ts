@@ -44,7 +44,7 @@ export class AdicionarTipoOcorrenciaComponent implements OnInit {
     this.rota = this.activatedRoute.snapshot.url[0].path;
     this.criarFormulario();
 
-    if (this.rota === 'editar-ocorrencia') {
+    if (this.rota === 'editar-tipo-ocorrencia') {
       this.tituloPagina = "Editar Ocorrência";
       this.id = this.activatedRoute.snapshot.params['id'];
       this.tipoOcorrenciaService.getTipoOcorrenciaPorId(this.id).subscribe(

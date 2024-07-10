@@ -14,6 +14,6 @@ import { TipoOcorrenciaRoutingModule } from './tipo-ocorrencia-routing.module';
     TipoOcorrenciaRoutingModule,
     TipoOcorrenciasComponent,
     ReactiveFormsModule,
-  ]
+  ],
 })
 export class TipoOcorrenciaModule { }
