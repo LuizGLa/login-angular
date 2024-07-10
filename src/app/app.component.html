@@ -2,6 +2,17 @@
 <mat-sidenav-container hasBackdrop="false" class="example-container">
   <mat-sidenav #sidenav mode="side" class="sidenav" opened>
     <div *ngIf="router.url !== '/login'" class="body-links">
+      <div class="d-flex user-info p-3">
+        <div>
+          <img class="icon-person" src="../assets/icons/person.png" alt="" srcset="">
+        </div>
+        <div class="user-details">
+          <label> {{ user?.name }}</label>
+          <div class="role">
+            <label> {{ user?.role | lowercase }}</label>
+          </div>
+        </div>
+      </div>
       <a mat-list-item class="links" routerLink="/mapa" routerLinkActive="active">
         <mat-icon fontIcon="map" class="icon"></mat-icon>
         Mapa
