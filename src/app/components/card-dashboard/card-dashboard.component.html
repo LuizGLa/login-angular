@@ -1,7 +1,11 @@
 <div class="card">
   <div class="card-headr">
     <mat-icon class="icon">{{ icon }}</mat-icon>
-    <span class="name">{{ name }}</span>
+    <span class="name" style="
+             white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            ">{{ name }}</span>
   </div>
   <div class="card-value">
     <span>{{ value }}</span>

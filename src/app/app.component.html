@@ -1,7 +1,7 @@
 <app-toolbar *ngIf="router.url !== '/login'" (toggleSidenav)="onToggleSidenav()"></app-toolbar>
 <mat-sidenav-container hasBackdrop="false" class="example-container">
   <mat-sidenav #sidenav mode="side" class="sidenav" opened>
-    <div class="body-links">
+    <div *ngIf="router.url !== '/login'" class="body-links">
       <a mat-list-item class="links" routerLink="/mapa" routerLinkActive="active">
         <mat-icon fontIcon="map" class="icon"></mat-icon>
         Mapa
@@ -17,11 +17,11 @@
       <a mat-list-item class="links" routerLink="/ruas" routerLinkActive="active">
         <mat-icon fontIcon="traffic" class="icon"></mat-icon>
         Ruas
-        </a>
-        <a mat-list-item class="links" routerLink="/usuarios" routerLinkActive="active">
-          <mat-icon fontIcon="group" class="icon"></mat-icon>
-          Usuários
-        </a>
+      </a>
+      <a mat-list-item class="links" routerLink="/usuarios" routerLinkActive="active">
+        <mat-icon fontIcon="group" class="icon"></mat-icon>
+        Usuários
+      </a>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>

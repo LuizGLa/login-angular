@@ -21,5 +21,6 @@ export class AuthService {
 
   clearToken(): void {
     sessionStorage.removeItem(this.tokenKey);
+    sessionStorage.removeItem(this.userId);
   }
 }

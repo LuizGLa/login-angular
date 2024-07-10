@@ -1,13 +1,20 @@
 <mat-toolbar class="toolbar">
-  <div class="body-page row d-flex">
+  <div class="body-page row d-flex align-items-center">
     <div class="col-6 header">
       <button mat-icon-button class="icon menuIcon" aria-label="Example icon-button with menu icon"
         (click)="onToggleSidenav()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-    <div class="col-6 header">
-      <img src="../../../../assets/images/logo-white.png" alt="logo" class="logo">
+    <div class="col-6 header-button">
+      <div class="logo-container">
+        <img src="../../../../assets/images/logo-white.png" alt="logo" class="logo">
+      </div>
+      <div class="logout-button">
+        <button mat-icon-button aria-label="Logout" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 </mat-toolbar>
